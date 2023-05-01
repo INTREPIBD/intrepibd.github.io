@@ -2789,7 +2789,7 @@ article.special header.major h2:after {
 }
 
 header.major p {
-	font-size: 1.25em;
+	/* font-size: 1.25em; */
 	letter-spacing: -0.025em;
 	margin-bottom: 0;
 }
@@ -3231,8 +3231,14 @@ table.alt tbody tr td {
 	border-color: rgba(255, 255, 255, 0.35);
 }
 
-.publication p {
+/* Publication */
+
+.publications p {
 	text-align: left;
+}
+
+.publications .publication {
+	margin-bottom: 1em;
 }
 
 /* Header */
