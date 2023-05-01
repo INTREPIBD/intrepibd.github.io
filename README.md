@@ -1,3 +1,3 @@
 ### Landing page of the INTREPIBD Group
 
-URL: [intrepibd.github.io](intrepibd.github.io)
+URL: [https://intrepibd.github.io](https://intrepibd.github.io)
