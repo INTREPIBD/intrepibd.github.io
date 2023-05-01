@@ -122,7 +122,19 @@
 
 	window.onload = function () {
 		Particles.init({
-			selector: '.background', color: '#666666', connectParticles: true,
+			selector: '.background',
+			maxParticles: 80,
+			speed: 0.25,
+			color: '#666666',
+			connectParticles: true,
+			responsive: [
+				{
+					breakpoint: 768,
+					options: {
+						maxParticles: 50,
+					}
+				}
+			]
 		});
 	};
 })(jQuery);

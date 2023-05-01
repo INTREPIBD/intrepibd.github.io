@@ -2293,7 +2293,7 @@ select {
 
 select option {
 	color: #ffffff;
-	background: #935d8c;
+	/* background: #935d8c; */
 }
 
 input[type="checkbox"]+label,
@@ -2311,7 +2311,7 @@ input[type="checkbox"]:checked+label:before,
 input[type="radio"]:checked+label:before {
 	background-color: #ffffff;
 	border-color: #ffffff;
-	color: #935d8c;
+	/* color: #935d8c; */
 }
 
 input[type="checkbox"]:focus+label:before,
@@ -3304,6 +3304,7 @@ table.alt tbody tr td {
 	margin: 0 auto;
 	max-width: 35%;
 	border-radius: 100%;
+	box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .3);
 }
 
 @media screen and (max-width: 1280px) {
@@ -3531,6 +3532,7 @@ body.is-preload #header.alt .logo {
 	background-color: #ffffff;
 	color: #636363;
 	border-radius: 0.25em;
+	box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .3);
 }
 
 #main input,
