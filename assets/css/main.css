@@ -3239,6 +3239,7 @@ table.alt tbody tr td {
 
 .publications .publication {
 	margin-bottom: 1em;
+	text-align: left;
 }
 
 /* Header */
