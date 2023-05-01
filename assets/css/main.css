@@ -3177,6 +3177,10 @@ table.alt tbody tr td {
 	width: 20em;
 }
 
+.spotlight p {
+	text-align: justify;
+}
+
 @media screen and (max-width: 980px) {
 
 	.spotlight {
