@@ -2970,9 +2970,13 @@ table.alt tbody tr td {
 	border-radius: 100%;
 }
 
+.features li p {
+	line-height: 1.1em;
+}
+
 .features li .icon {
 	border-color: transparent;
-	padding-left: 0.25em;
+	padding-left: 0.5em;
 }
 
 .features li .icon.brands:hover:before {
@@ -3235,6 +3239,10 @@ table.alt tbody tr td {
 
 .publications p {
 	text-align: left;
+}
+
+.publications header.major {
+	margin-bottom: 1em;
 }
 
 .publications .publication {
