@@ -1,5 +1,5 @@
 @import url(fontawesome-all.min.css);
-@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400';
+@import 'https://fonts.googleapis.com/css?family=Lexend:300,400';
 
 /*
 	Stellar by HTML5 UP
@@ -221,8 +221,8 @@ body,
 input,
 select,
 textarea {
-	font-family: "Source Sans Pro", Helvetica, sans-serif;
-	font-size: 17pt;
+	font-family: "Lexend", Helvetica, sans-serif;
+	font-size: 14pt;
 	font-weight: 300;
 	line-height: 1.65;
 }
@@ -2789,7 +2789,7 @@ article.special header.major h2:after {
 }
 
 header.major p {
-	/* font-size: 1.25em; */
+	font-size: 1em;
 	letter-spacing: -0.025em;
 	margin-bottom: 0;
 }
@@ -3184,6 +3184,7 @@ table.alt tbody tr td {
 
 .spotlight p {
 	text-align: justify;
+	line-height: 1.6em;
 }
 
 @media screen and (max-width: 980px) {
@@ -3238,6 +3239,10 @@ table.alt tbody tr td {
 		width: 18em;
 	}
 
+	.spotlight p {
+		line-height: inherit;
+	}
+
 }
 
 .spotlight .image {
@@ -3279,7 +3284,7 @@ table.alt tbody tr td {
 }
 
 #header.alt h1 {
-	font-size: 3em;
+	font-size: 2.5em;
 }
 
 #header.alt>* {
@@ -3355,7 +3360,7 @@ table.alt tbody tr td {
 	}
 
 	#header.alt h1 {
-		font-size: 2.5em;
+		font-size: 2em;
 	}
 
 	#header.alt .logo img {
@@ -3489,6 +3494,7 @@ body.is-preload #header.alt .logo {
 	border: 0;
 	border-radius: 8px;
 	box-shadow: inset 0 0 0 1px transparent;
+	color: #333;
 }
 
 #nav ul li a:hover {
@@ -3534,7 +3540,8 @@ body.is-preload #header.alt .logo {
 
 #main {
 	background-color: #ffffff;
-	color: #636363;
+	/* color: #636363; */
+	color: #333;
 	border-radius: 0.25em;
 	box-shadow: 0 6px 10px 0 rgba(0, 0, 0, .14), 0 1px 18px 0 rgba(0, 0, 0, .12), 0 3px 5px -1px rgba(0, 0, 0, .3);
 }
@@ -3560,7 +3567,8 @@ body.is-preload #header.alt .logo {
 #main h4,
 #main h5,
 #main h6 {
-	color: #636363;
+	/* color: #636363; */
+	color: #333;
 }
 
 #main blockquote {
@@ -3587,7 +3595,7 @@ body.is-preload #header.alt .logo {
 #main .button {
 	background-color: transparent;
 	box-shadow: inset 0 0 0 1px #dddddd;
-	color: #636363 !important;
+	color: #333 !important;
 }
 
 #main input[type="submit"]:hover,
