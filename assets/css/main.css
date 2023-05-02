@@ -2595,14 +2595,14 @@ dl dd {
 
 dl.alt dt {
 	display: block;
-	width: 7em;
+	width: 7.5em;
 	margin: 0;
 	clear: left;
 	float: left;
 }
 
 dl.alt dd {
-	margin: 0 0 0.85em 5.5em;
+	margin: 0 0 0.2em 7.5em;
 }
 
 dl.alt:after {
@@ -2966,7 +2966,7 @@ table.alt tbody tr td {
 }
 
 .features li img {
-	width: 80%;
+	width: 70%;
 	border-radius: 100%;
 }
 
@@ -2980,7 +2980,7 @@ table.alt tbody tr td {
 }
 
 .features li .icon.brands:hover:before {
-	color: #000;
+	color: #0b0b0b;
 	transition: 0.5s;
 }
 
@@ -3249,8 +3249,7 @@ table.alt tbody tr td {
 	margin-bottom: 1em;
 }
 
-.publications .publication {
-	margin-bottom: 1em;
+.publications ul li {
 	text-align: left;
 }
 
@@ -3850,6 +3849,10 @@ body.is-preload #header.alt .logo {
 
 @media screen and (max-width: 480px) {
 
+	#main {
+		border-radius: 0;
+	}
+
 	#main>.main {
 		padding: 3em 1.5em 1em 1.5em;
 	}
@@ -3973,14 +3976,6 @@ body.is-preload #header.alt .logo {
 }
 
 @media screen and (max-width: 480px) {
-
-	#wrapper {
-		max-width: calc(100% - 2em);
-	}
-
-}
-
-@media screen and (max-width: 360px) {
 
 	#wrapper {
 		max-width: 100%;
