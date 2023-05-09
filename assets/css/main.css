@@ -2979,6 +2979,11 @@ table.alt tbody tr td {
 	padding-left: 0.5em;
 }
 
+.features li .icon.brands:before {
+	color: #666666;
+	transition: 0.5s;
+}
+
 .features li .icon.brands:hover:before {
 	color: #0b0b0b;
 	transition: 0.5s;

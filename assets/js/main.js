@@ -120,21 +120,21 @@
 		speed: 1000
 	});
 
-	window.onload = function () {
-		Particles.init({
-			selector: '.background',
-			maxParticles: 80,
-			speed: 0.25,
-			color: '#666666',
-			connectParticles: true,
-			responsive: [
-				{
-					breakpoint: 768,
-					options: {
-						maxParticles: 50,
-					}
-				}
-			]
-		});
-	};
+	// window.onload = function () {
+	// 	Particles.init({
+	// 		selector: '.background',
+	// 		maxParticles: 80,
+	// 		speed: 0.25,
+	// 		color: '#666666',
+	// 		connectParticles: true,
+	// 		responsive: [
+	// 			{
+	// 				breakpoint: 768,
+	// 				options: {
+	// 					maxParticles: 50,
+	// 				}
+	// 			}
+	// 		]
+	// 	});
+	// };
 })(jQuery);
