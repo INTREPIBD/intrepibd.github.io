@@ -2792,6 +2792,7 @@ header.major p {
 	font-size: 1em;
 	letter-spacing: -0.025em;
 	margin-bottom: 0;
+	text-align: left;
 }
 
 header.major.special {
