@@ -3543,6 +3543,11 @@ body.is-preload #header.alt .logo {
 
 #funders p {
 	text-align: left;
+	margin: 0 0 0.5em 0;
+}
+
+#funders a {
+	border-bottom: none;
 }
 
 #funders div.logos {
@@ -3550,14 +3555,23 @@ body.is-preload #header.alt .logo {
 }
 
 #funders img.logo {
-	width: calc(100%/4 - 1em);
+	width: calc(100%/3 - 3em);
 	max-width: 250px;
+	margin: 0 1em 0;
 }
 
 @media screen and (max-width: 736px) {
 
 	#funders img.logo {
 		width: calc(100%/2 - 1em);
+	}
+
+}
+
+@media screen and (max-width: 480px) {
+
+	#funders img.logo {
+		width: calc(100%/1 - 1em);
 	}
 
 }
