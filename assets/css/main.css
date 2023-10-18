@@ -4051,7 +4051,7 @@ body.is-preload #header.alt .logo {
 
 /* Summary */
 
-#summary .features b {
+#counter {
 	font-size: 4em;
 	font-weight: 100;
 }
