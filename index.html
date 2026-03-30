@@ -14,6 +14,102 @@
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
+	<!-- Leaflet for Our Network map -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+	<style>
+		#collab-map {
+			width: 100%;
+			height: 520px;
+			border-radius: 8px;
+			position: relative;
+		}
+
+		.collab-pin {
+			width: 26px;
+			height: 26px;
+			border-radius: 50% 50% 50% 0;
+			transform: rotate(-45deg);
+			border: 3px solid white;
+			box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+		}
+
+		.leaflet-popup-content-wrapper {
+			border-radius: 12px;
+			box-shadow: 0 8px 40px rgba(13, 27, 42, 0.18);
+			padding: 0;
+			overflow: hidden;
+		}
+
+		.leaflet-popup-content {
+			margin: 0;
+			width: 260px !important;
+		}
+
+		.leaflet-popup-content p {
+			margin: 0 0 0.5em;
+		}
+
+		.collab-popup-header {
+			padding: 14px 16px 10px;
+			border-bottom: 3px solid;
+		}
+
+		.collab-popup-header h3 {
+			font-size: 1rem;
+			font-weight: 700;
+			color: #1a2e44;
+			line-height: 1.3;
+			margin: 0 0 2px 0;
+			border: none;
+			padding: 0;
+		}
+
+		.collab-popup-header p {
+			margin: 0;
+		}
+
+		.collab-popup-body {
+			padding: 12px 16px 14px;
+			background: #fff;
+		}
+
+		.collab-popup-desc {
+			margin: 0 0 8px 0;
+			line-height: 1.4;
+		}
+
+		.collab-popup-people {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 4px;
+			margin-bottom: 10px;
+		}
+
+		.collab-popup-person {
+			display: inline-block;
+			background: #f0f0f0;
+			color: #333;
+			font-size: 0.72rem;
+			font-weight: 500;
+			padding: 2px 9px;
+			border-radius: 20px;
+		}
+
+		.collab-popup-link {
+			display: inline-block;
+			text-decoration: none;
+		}
+
+		.collab-popup-link:hover {
+			text-decoration: underline;
+		}
+
+		@media screen and (max-width: 736px) {
+			#collab-map {
+				height: 350px;
+			}
+		}
+	</style>
 </head>
 
 <body class="is-preload">
@@ -34,6 +130,7 @@
 				<li><a href="#summary">Summary</a></li>
 				<li><a href="#research">Research</a></li>
 				<li><a href="#the-team">The Team</a></li>
+				<li><a href="#our-network">Our Network</a></li>
 				<li><a href="#media">Media</a></li>
 			</ul>
 		</nav>
@@ -260,6 +357,14 @@
 				</ul>
 			</section>
 
+			<section id="our-network" class="main special">
+				<header class="major">
+					<h2>Our Network</h2>
+					<p>Research institutes we collaborate with around the world.</p>
+				</header>
+				<div id="collab-map"></div>
+			</section>
+
 			<section id="media" class="main special publications">
 				<header class="major">
 					<h2>Media</h2>
@@ -362,6 +467,92 @@
 
 	<!-- <canvas class="background"></canvas>
 	<script src="assets/js/particles.min.js"></script> -->
+
+	<!-- Leaflet for Our Network map -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+	<script>
+		const collabInstitutes = [
+			{
+				name: "Universidad de Cádiz",
+				city: "Cádiz, Spain",
+				lat: 36.5379139, lng: -6.300027,
+				color: "#ff595e",
+				description: "Leader of Neuropsychopharmacology and psychobiology group, Psychology Department",
+				people: ["Cristina Romero López-Alberca"],
+				url: "https://produccioncientifica.uca.es/investigadores/113353/detalle"
+			},
+			{
+				name: "Hospital Universitario de Basurto",
+				city: "Bilbao, Spain",
+				lat: 43.2615543, lng: -2.955517,
+				color: "#ffca3a",
+				description: "Leader of Early Intervention Services for Psychosis",
+				people: ["Ana Catalán Alcántara"],
+				url: null
+			},
+			{
+				name: "Hospital Universitari Institut Pere Mata",
+				city: "Reus, Spain",
+				lat: 41.1557062, lng: 1.0663926,
+				color: "#8ac926",
+				description: null,
+				people: ["Esteban Sepúlveda Ramos"],
+				url: null
+			},
+			{
+				name: "Università di Parma",
+				city: "Parma, Italy",
+				lat: 44.8007886, lng: 10.3210303,
+				color: "#1982c4",
+				description: "Department of Medicine and Surgery",
+				people: ["Paolo Ossola"],
+				url: "https://personale.unipr.it/en/ugovdocenti/person/95562"
+			},
+			{
+				name: "Hospital Clínic de Barcelona",
+				city: "Barcelona, Spain",
+				lat: 41.3894185, lng: 2.1496325,
+				color: "#6a4c93",
+				description: "Bipolar and depressive disorders research group",
+				people: ["Diego Hidalgo-Mazzei", "Eduard Vieta"],
+				url: "https://www.clinicbarcelona.org/en/idibaps/research-groups/bipolar-and-depressive-disorders"
+			}
+		];
+
+		const collabMap = L.map('collab-map', { zoomControl: true, attributionControl: true });
+
+		L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+			subdomains: 'abcd',
+			maxZoom: 19
+		}).addTo(collabMap);
+
+		const collabMarkers = collabInstitutes.map(u => {
+			const icon = L.divIcon({
+				className: '',
+				html: `<div class="collab-pin" style="background:${u.color}"></div>`,
+				iconSize: [26, 26],
+				iconAnchor: [13, 26],
+				popupAnchor: [0, -28]
+			});
+
+			const peopleHtml = u.people.map(p => `<span class="collab-popup-person">${p}</span>`).join('');
+			const popupHtml = `
+				<div class="collab-popup-header" style="border-color:${u.color}">
+					<h3>${u.name}</h3>
+					<p>&#128205; ${u.city}</p>
+				</div>
+				<div class="collab-popup-body">
+					${u.description ? `<p class="collab-popup-desc">${u.description}</p>` : ''}
+					<div class="collab-popup-people">${peopleHtml}</div>
+					${u.url ? `<a class="collab-popup-link" href="${u.url}" target="_blank" rel="noopener">Visit group</a>` : ''}
+				</div>`;
+
+			return L.marker([u.lat, u.lng], { icon }).bindPopup(popupHtml).addTo(collabMap);
+		});
+
+		collabMap.fitBounds(L.featureGroup(collabMarkers).getBounds().pad(0.2));
+	</script>
 </body>
 
 </html>
