@@ -14,6 +14,7 @@
 	<noscript>
 		<link rel="stylesheet" href="assets/css/noscript.css" />
 	</noscript>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
 </head>
 
 <body class="is-preload">
@@ -34,6 +35,7 @@
 				<li><a href="#summary">Summary</a></li>
 				<li><a href="#research">Research</a></li>
 				<li><a href="#the-team">The Team</a></li>
+				<li><a href="#our-network">Our Network</a></li>
 				<li><a href="#media">Media</a></li>
 			</ul>
 		</nav>
@@ -260,6 +262,14 @@
 				</ul>
 			</section>
 
+			<section id="our-network" class="main special">
+				<header class="major">
+					<h2>Our Network</h2>
+					<p>Research institutes we collaborate with around the world.</p>
+				</header>
+				<div id="collab-map"></div>
+			</section>
+
 			<section id="media" class="main special publications">
 				<header class="major">
 					<h2>Media</h2>
@@ -362,6 +372,92 @@
 
 	<!-- <canvas class="background"></canvas>
 	<script src="assets/js/particles.min.js"></script> -->
+
+	<!-- Leaflet for Our Network map -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+	<script>
+		const collabInstitutes = [
+			{
+				name: "Universidad de Cádiz",
+				city: "Cádiz, Spain",
+				lat: 36.5379139, lng: -6.300027,
+				color: "#ff595e",
+				description: "Leader of Neuropsychopharmacology and psychobiology group, Psychology Department",
+				people: ["Cristina Romero López-Alberca"],
+				url: "https://produccioncientifica.uca.es/investigadores/113353/detalle"
+			},
+			{
+				name: "Hospital Universitario de Basurto",
+				city: "Bilbao, Spain",
+				lat: 43.2615543, lng: -2.955517,
+				color: "#ffca3a",
+				description: "Leader of Early Intervention Services for Psychosis",
+				people: ["Ana Catalán Alcántara"],
+				url: null
+			},
+			{
+				name: "Hospital Universitari Institut Pere Mata",
+				city: "Reus, Spain",
+				lat: 41.1557062, lng: 1.0663926,
+				color: "#8ac926",
+				description: null,
+				people: ["Esteban Sepúlveda Ramos"],
+				url: null
+			},
+			{
+				name: "Università di Parma",
+				city: "Parma, Italy",
+				lat: 44.8007886, lng: 10.3210303,
+				color: "#1982c4",
+				description: "Department of Medicine and Surgery",
+				people: ["Paolo Ossola"],
+				url: "https://personale.unipr.it/en/ugovdocenti/person/95562"
+			},
+			{
+				name: "Hospital Clínic de Barcelona",
+				city: "Barcelona, Spain",
+				lat: 41.3894185, lng: 2.1496325,
+				color: "#6a4c93",
+				description: "Bipolar and depressive disorders research group",
+				people: ["Diego Hidalgo-Mazzei", "Eduard Vieta"],
+				url: "https://www.clinicbarcelona.org/en/idibaps/research-groups/bipolar-and-depressive-disorders"
+			}
+		];
+
+		const collabMap = L.map('collab-map', { zoomControl: true, attributionControl: true });
+
+		L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png', {
+			attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+			subdomains: 'abcd',
+			maxZoom: 19
+		}).addTo(collabMap);
+
+		const collabMarkers = collabInstitutes.map(u => {
+			const icon = L.divIcon({
+				className: '',
+				html: `<div class="collab-pin" style="background:${u.color}"></div>`,
+				iconSize: [26, 26],
+				iconAnchor: [13, 26],
+				popupAnchor: [0, -28]
+			});
+
+			const peopleHtml = u.people.map(p => `<span class="collab-popup-person">${p}</span>`).join('');
+			const popupHtml = `
+				<div class="collab-popup-header" style="border-color:${u.color}">
+					<h3>${u.name}</h3>
+					<p>&#128205; ${u.city}</p>
+				</div>
+				<div class="collab-popup-body">
+					${u.description ? `<p class="collab-popup-desc">${u.description}</p>` : ''}
+					<div class="collab-popup-people">${peopleHtml}</div>
+					${u.url ? `<a class="collab-popup-link" href="${u.url}" target="_blank" rel="noopener">Visit group</a>` : ''}
+				</div>`;
+
+			return L.marker([u.lat, u.lng], { icon }).bindPopup(popupHtml).addTo(collabMap);
+		});
+
+		collabMap.fitBounds(L.featureGroup(collabMarkers).getBounds().pad(0.2));
+	</script>
 </body>
 
 </html>
